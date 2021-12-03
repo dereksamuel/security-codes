@@ -5,6 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #1d2020;
+  background-image: url(https://i.gifer.com/3Sgr.gif);
+  /* background-repeat: no-repeat; */
+  /* background-size: contain; */
+}
+
+h1 {
+  background-image: url(https://i.gifer.com/EAoe.gif);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-top: 3rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 code {

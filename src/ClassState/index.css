@@ -1,0 +1,27 @@
+.ClassState {
+  padding: 2rem;
+  border: 1px solid rgb(120, 241, 140);
+  background-color: rgba(0, 0, 0, 0.658);
+  border-radius: 5px;
+  margin: 5rem;
+}
+
+.ClassState h2 {
+  color: rgb(120, 241, 140);
+}
+
+.ClassState input {
+  padding: 1rem;
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+.ClassState button {
+  padding: 1rem;
+  border: none;
+  outline: none;
+  background-color: rgb(120, 241, 140);
+  font-weight: bold;
+  font-family: monospace;
+}
