@@ -2,36 +2,58 @@ import { useEffect, useState } from "react";
 import "./index.css";
 
 function UseState({ name }) {
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const SECURITY_CODE = "key012455";
+  const [state, setState] = useState({
+    value: "",
+    error: false,
+    loading: false,
+  });
 
   useEffect(() => {
-    if (loading) {
+    if (state.loading) {
       const timeout = setTimeout(() => {
-        console.info("making the info");
+        setState({
+          ...state,
+          error: state.value !== SECURITY_CODE,
+          loading: false,
+        });
+
         clearTimeout(timeout);
       }, 3000);
     }
-  }, [loading]);
+  }, [state.loading]);
 
   return (
     <div className="UseState">
       <h2>Delete { name }</h2>
       <p>Please, write the security code.</p>
       {
-        error && (
+        state.error && (
           <p>Error: the code is incorrect, it's not OK</p>
         )
       }
       {
-        loading && (
+        state.loading && (
           <p>Loading...</p>
         )
       }
       <label htmlFor="">
-        <input type="text" placeholder="Security code"/>
+        <input
+          type="text"
+          placeholder="Security code"
+          value={state.value}
+          onChange={(event) => {
+            setState({
+              ...state,
+              value: event.target.value,
+            });
+          }}
+        />
         <button
-          onClick={() => setLoading(true)}
+          onClick={() => setState({
+            ...state,
+            loading: true,
+          })}
         >Comprobe</button>
       </label>
     </div>

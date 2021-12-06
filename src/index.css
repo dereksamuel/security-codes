@@ -13,14 +13,17 @@ body {
 }
 
 h1 {
-  background-image: url(https://i.gifer.com/EAoe.gif);
+  /* background-image: url(https://i.gifer.com/EAoe.gif);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   text-align: center;
   margin-top: 3rem;
-  font-weight: bold;
+  font-weight: bold; */
+  color: whitesmoke;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin-top: 3rem;
 }
 
 code {
