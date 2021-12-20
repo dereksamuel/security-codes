@@ -1,75 +1,126 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import "./index.css";
+
+const initialState = {
+  value: "",
+  error: false,
+  loading: false,
+  deleted: false,
+  confirmed: false,
+};
 
 const SECURITY_CODE = "paradigma";
 
-function UseState({ name }) {
-  const [state, setState] = useState({
-    value: "",
-    error: false,
+const actionTypes = {
+  validate: "VALIDATE",
+  error_validate: "ERROR_VALIDATE",
+  write: "WRITE",
+  reset: "RESET",
+  delete: "DELETE",
+  check: "CHECK",
+  error: "ERROR",
+};
+
+const reducerObject = (state, action) => ({
+  [actionTypes.error]: {
+    ...state,
+    error: true,
     loading: false,
-    deleted: false,
+  },
+  [actionTypes.check]: {
+    ...state,
+    loading: true,
+    error: false,
+  },
+  [actionTypes.delete]: {
+    ...state,
+    deleted: true,
+    loading: false,
+  },
+  [actionTypes.reset]: {
+    ...state,
     confirmed: false,
-  });
+    deleted: false,
+    error: false,
+    value: "",
+  },
+  [actionTypes.write]: {
+    ...state,
+    value: action.payload,
+    error: false,
+  },
+  [actionTypes.validate]: {
+    ...state,
+    confirmed: true,
+    loading: false,
+  },
+  [actionTypes.error_validate]: {
+    ...state,
+    error: state.value !== SECURITY_CODE,
+    loading: false,
+  },
+});
+
+const finalReducer = (state, action) => {
+  if (reducerObject(state, action)[action.type]) {
+    return reducerObject(state, action)[action.type];
+  } else {
+    return {
+      ...initialState
+    };
+  }
+};
+
+function UseReducer({ name }) {
+  const [state, dispatch] = useReducer(finalReducer, initialState);
 
   const onValidate = () => {
-    setState({
-      ...state,
-      confirmed: true,
-      loading: false,
+    dispatch({
+      type: actionTypes.validate,
     });
   };
 
   const onError = () => {
-    setState({
-      ...state,
-      error: true,
-      loading: false,
+    dispatch({
+      type: actionTypes.error,
     });
   };
 
   const onWrite = (newValue) => {
-    setState({
-      ...state,
-      value: newValue,
-      error: false,
+    dispatch({
+      type: actionTypes.write,
+      payload: newValue,
     });
   };
 
   const onCheck = () => {
-    setState({
-      ...state,
-      loading: true,
-      error: false,
-    });
+    dispatch({
+      type: actionTypes.check,
+    })
   };
 
   const onDelete = () => {
-    setState({
-      ...state,
-      deleted: true,
-      loading: false,
-    });
+    dispatch({
+      type: actionTypes.delete,
+    })
   };
 
   const onReset = () => {
-    setState({
-      ...state,
-      confirmed: false,
-      deleted: false,
-      error: false,
-      value: "",
+    dispatch({
+      type: actionTypes.reset,
+    })
+  };
+
+  const onErrorValidation = () => {
+    dispatch({
+      type: actionTypes.error_validate,
     });
   };
 
   useEffect(() => {
     if (state.loading) {
       const timeout = setTimeout(() => {
-        setState({
-          ...state,
-          error: state.value !== SECURITY_CODE,
-          loading: false,
-        });
+        onErrorValidation();
 
         if (state.value === SECURITY_CODE) {
           onValidate();
@@ -136,5 +187,5 @@ function UseState({ name }) {
 }
 
 export {
-  UseState,
+  UseReducer,
 };

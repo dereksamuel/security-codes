@@ -1,0 +1,92 @@
+// const reducer = (state, action) => {
+// };
+
+// const reducer = (state, action) => {
+  // if (action.type === "ERROR") {
+  //   return {
+  //     ...state,
+  //     error: true,
+  //     loading: false,
+  //   };
+  // } else if (action.type === "CHECK") {
+  //   return {
+  //     ...state,
+  //     loading: true,
+  //     error: false,
+  //   };
+  // } else if (action.type === "DELETE") {
+  //   return {
+  //     ...state,
+  //     deleted: true,
+  //     loading: false,
+  //   };
+  // } else if (action.type === "RESET") {
+  //   return {
+  //     ...state,
+  //     confirmed: false,
+  //     deleted: false,
+  //     error: false,
+  //     value: "",
+  //   };
+  // } else if (action.type === "WRITE") {
+  //   return {
+  //     ...state,
+  //     value: action.payload.newValue,
+  //     error: false,
+  //   };
+  // } else if (action.type === "VALIDATE") {
+  //   return {
+  //     ...state,
+  //     confirmed: true,
+  //     loading: false,
+  //   };
+  // } else {
+  //   return {
+  //     ...initialState
+  //   };
+  // }
+  // switch (action.type) {
+  //   case "ERROR":
+  //     return {
+  //       ...state,
+  //       error: true,
+  //       loading: false,
+  //     };
+  //   case "CHECK":
+  //     return {
+  //       ...state,
+  //       loading: true,
+  //       error: false,
+  //     };
+  //   case "DELETE":
+  //     return {
+  //       ...state,
+  //       deleted: true,
+  //       loading: false,
+  //     };
+  //   case "RESET":
+  //     return {
+  //       ...state,
+  //       confirmed: false,
+  //       deleted: false,
+  //       error: false,
+  //       value: "",
+  //     };
+  //   case "WRITE":
+  //     return {
+  //       ...state,
+  //       value: action.payload.newValue,
+  //       error: false,
+  //     };
+  //   case "VALIDATE":
+  //     return {
+  //       ...state,
+  //       confirmed: true,
+  //       loading: false,
+  //     };
+  //   default:
+  //     return {
+  //       ...initialState
+  //     };
+  // }
+// };

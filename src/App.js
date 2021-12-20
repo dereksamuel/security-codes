@@ -1,5 +1,6 @@
 import { UseState } from "./UseState/index";
-import { ClassState } from "./ClassState/index";
+import { UseReducer } from "./UseReducer/index";
+// import { ClassState } from "./ClassState/index";
 
 import "./App.css";
 
@@ -7,7 +8,8 @@ function App() {
   return (
     <div className="App">
       <UseState name="UseState" />
-      <ClassState name="ClassState" />
+      <UseReducer name="UseReducer" />
+      {/* <ClassState name="ClassState" /> */}
     </div>
   );
 }
