@@ -3,7 +3,7 @@ import {
   finalReducer,
   initialState,
   actionTypes
-} from "../utils/useReducer.reducer";
+} from "../utils/reducers/useReducer.reducer";
 
 import "./index.css";
 
